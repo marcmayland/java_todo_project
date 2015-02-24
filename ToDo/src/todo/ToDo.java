@@ -19,6 +19,9 @@ import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javafx.scene.layout.Background;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  *
@@ -34,18 +37,14 @@ public class ToDo extends Application{
     @Override
     public void start(Stage primaryStage){
 
-        Button closeButton = new Button("X");
-        Button addButton = new Button("+");
-        //Label label = new Label("ToDo");
+        Button closeButton = new Button("Close");
+        closeButton.setBackground(Background.EMPTY);
+        closeButton.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 15));
+        Button addButton = new Button("Add");
+        addButton.setBackground(Background.EMPTY);
+        addButton.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 15));
         HBox hb = new HBox(addButton,  closeButton);
-        //label.setAlignment(Pos.TOP_CENTER);
-        closeButton.setAlignment(Pos.TOP_RIGHT);
-
-        closeButton.setOnAction(e -> {
-
-            primaryStage.close();
-        });
-
+        
         TreeItem<Node> rootItem = new TreeItem<>(hb);
         rootItem.setExpanded(true);
         rootItem.expandedProperty().addListener(c -> {
@@ -53,6 +52,7 @@ public class ToDo extends Application{
                 rootItem.setExpanded(true);
             }
         });
+        
         ArrayList<String> strings = new ArrayList<String>();
 
         for (int i = 0; i < 10; i++) {
@@ -73,7 +73,27 @@ public class ToDo extends Application{
 
         TreeView<Node> tree = new TreeView<Node> (rootItem);
         tree.setMinWidth(350);
-
+        
+        tree.getSelectionModel().selectedItemProperty().addListener( d -> {
+            if((tree.getFocusModel().isFocused(0))!=true)
+            {
+                closeButton.setStyle("-fx-text-fill: white");
+                addButton.setStyle("-fx-text-fill: white");
+            }else{
+                closeButton.setStyle("-fx-text-fill: black");
+                addButton.setStyle("-fx-text-fill: black");
+            } 
+        });
+        
+        addButton.setOnAction(e -> {
+               
+        });
+        
+        closeButton.setOnAction(e -> {
+            primaryStage.close();
+        });
+        
+        
         Pane pane = new Pane(tree);
         primaryStage.setScene(new Scene(pane));
         primaryStage.initStyle(StageStyle.UNDECORATED);
