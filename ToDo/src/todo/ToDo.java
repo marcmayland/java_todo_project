@@ -86,7 +86,7 @@ public class ToDo extends Application{
         });
         
         addButton.setOnAction(e -> {
-               
+            new Form();
         });
         
         closeButton.setOnAction(e -> {
