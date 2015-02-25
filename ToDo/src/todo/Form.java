@@ -25,12 +25,9 @@ public class Form {
         final Form form = this;
         Button exitButton = new Button();
         exitButton.setText("Exit");
-        exitButton.setOnAction(new EventHandler<ActionEvent>() {
+        exitButton.setOnAction(e -> {
             
-            @Override
-            public void handle(ActionEvent event) {
-                primaryStage.close();
-            }
+            primaryStage.close();
         });
         
         StackPane root = new StackPane();
