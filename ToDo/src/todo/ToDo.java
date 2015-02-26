@@ -88,20 +88,6 @@ public class ToDo extends Application{
             }
         }
 
-
-        /*tree.getSelectionModel().selectedItemProperty().addListener( d -> {
-            if(tree.getFocusModel().isFocused(0))
-            {
-                closeButton.setStyle("-fx-text-fill: white");
-                addButton.setStyle("-fx-text-fill: white");
-                deleteButton.setStyle("-fx-text-fill: white");
-            }else{
-                closeButton.setStyle("-fx-text-fill: black");
-                addButton.setStyle("-fx-text-fill: black");
-                deleteButton.setStyle("-fx-text-fill: black");
-            }
-        });*/
-
         VBox vb = new VBox(hb, tree);
 
         Pane pane = new Pane(vb);
