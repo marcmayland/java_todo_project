@@ -5,6 +5,7 @@
  */
 package todo;
 
+import static javafx.application.Application.STYLESHEET_MODENA;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -35,7 +36,7 @@ public class Form {
          */
         Button closeButton = new Button("Cancel");
         closeButton.setBackground(Background.EMPTY);
-        //closeButton.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 15));
+        closeButton.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 15));
         closeButton.setOnAction(e -> {
 
             primaryStage.close();
@@ -43,7 +44,7 @@ public class Form {
 
         Button addButton = new Button("Save");
         addButton.setBackground(Background.EMPTY);
-        //addButton.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 15));
+        addButton.setFont(Font.font(STYLESHEET_MODENA, FontWeight.BOLD, 15));
         HBox hb = new HBox(addButton,  closeButton);
 
         /*TreeItem<Node> rootItem = new TreeItem<>(hb);
